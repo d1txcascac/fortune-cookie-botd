@@ -129,6 +129,11 @@ app.post('/', (req, res) => {
     res.sendStatus(200);
 });
 
+// Обработка GET запросов
+app.get('/', (req, res) => {
+    res.send('Bot is running!');
+});
+
 // Запуск сервера
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, async () => {
