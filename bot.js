@@ -18,7 +18,7 @@ const predictions = JSON.parse(fs.readFileSync('predictions.json', 'utf8'));
 async function getGeminiPrediction(name, category) {
     try {
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "models/gemini-pro" });
 
         const prompt = `
 Ты — TikTok-оракул Fortune Cookie Bot. Твоя задача — написать очень человечное, подробное, дружелюбное и вдохновляющее предсказание для пользователя по имени ${name}. Категория: ${category === 'humor' ? 'юмор (смешно, дерзко, с мемами)' : category === 'mystic' ? 'мистика (таинственно, загадочно, вдохновляюще)' : 'мемы (иронично, с вайбом TikTok)'}.
