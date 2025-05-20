@@ -147,4 +147,3 @@ app.listen(PORT, async () => {
         console.error('Ошибка при установке webhook:', error);
     }
 }); 
-}); 
