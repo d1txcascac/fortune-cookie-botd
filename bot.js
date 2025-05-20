@@ -17,15 +17,15 @@ const predictions = JSON.parse(fs.readFileSync('predictions.json', 'utf8'));
 // Функция для получения предсказания от Grok
 async function getGrokPrediction(name, category) {
     try {
-        const prompt = `Сгенерируй короткое, забавное предсказание для ${name} в стиле TikTok. 
-        Категория: ${category === 'humor' ? 'юмористическое' : category === 'mystic' ? 'мистическое' : 'мемное'}.
-        Предсказание должно быть не длиннее 100 символов и содержать имя ${name}.`;
+        const prompt = `Ты — весёлый TikTok-оракул, который пишет очень человечные, подробные и дружелюбные предсказания для пользователей. Тебя зовут Fortune Cookie Bot. Твоя задача — придумать интересное, оригинальное и позитивное предсказание для пользователя по имени ${name}. Категория: ${category === 'humor' ? 'юмор (смешно, дерзко, с мемами)' : category === 'mystic' ? 'мистика (таинственно, загадочно, вдохновляюще)' : 'мемы (иронично, с вайбом TikTok)'}.
+
+Пиши от первого лица, обращайся к пользователю по имени (${name}), добавляй детали, эмоции, TikTok-вайб, эмодзи и не ограничивайся 100 символами. Сделай так, чтобы предсказание было похоже на совет или вдохновляющее сообщение от друга. Не повторяй шаблоны, не используй сухой стиль.`;
 
         const response = await axios.post('https://api.grok.ai/v1/chat/completions', {
             messages: [{ role: 'user', content: prompt }],
             model: 'grok-1',
-            temperature: 0.7,
-            max_tokens: 150
+            temperature: 0.9,
+            max_tokens: 200
         }, {
             headers: {
                 'Authorization': `Bearer ${process.env.GROK_API_KEY}`,
