@@ -26,6 +26,8 @@ async function getGeminiPrediction(name, category) {
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
+        console.log('Gemini prompt:', prompt);
+        console.log('Gemini response:', response.text());
         return response.text().trim();
     } catch (error) {
         console.error('Ошибка при получении предсказания от Gemini:', error);
